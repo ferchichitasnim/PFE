@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card">
+    <h2>Upload a PBIX</h2>
+    <p class="muted small">We’ll analyze your report and generate an automatic narrative summary.</p>
+    <form action="/web/upload" method="post" enctype="multipart/form-data"
+          style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+      <input type="file" name="file" accept=".pbix" required />
+      <button class="btn" type="submit">Upload</button>
+    </form>
+  </div>
+{% endblock %}
+

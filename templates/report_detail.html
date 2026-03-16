@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card">
+    {% if report %}
+      <h2>{{ report.name }}</h2>
+      <p class="muted small">
+        PBIX path: <code>{{ report.pbix_path }}</code><br />
+        Status: <strong>{{ report.status }}</strong>
+      </p>
+
+      <div style="margin-top: 12px;">
+        <form action="/web/reports/{{ report.id }}/analyze" method="post">
+          <button class="btnSecondary" type="submit">Run analysis now</button>
+        </form>
+      </div>
+    {% else %}
+      <h2>Report not found</h2>
+    {% endif %}
+  </div>
+
+  <div class="card">
+    <h2>Narrative summary</h2>
+    {% if narrative %}
+      <pre>{{ narrative.text }}</pre>
+      <p class="muted small">Generated at: {{ narrative.created_at }}</p>
+    {% else %}
+      <p class="muted">No narrative yet. Upload triggers background analysis, or click “Run analysis now”.</p>
+    {% endif %}
+  </div>
+{% endblock %}
